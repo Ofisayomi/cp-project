@@ -23,11 +23,11 @@ public class Respository<T>:IRepository<T> where T : BaseEntity
 
     public async Task<List<T>> GetItems(string sqlQuery){
         QueryDefinition queryDefinition= new QueryDefinition(sqlQuery);
-        _container = (await database).GetContainer(typeof(T).Name);
+        _container = (await _database).GetContainer(typeof(T).Name);
         FeedIterator<T> iterator = _container.GetItemQueryIterator<T>(queryDefinition);
         List<T> items = new List<T>();
         while(iterator.HasMoreResults){
-            FeedResponse<T> resultSets = await queryResult.ReadNextAsync();
+            FeedResponse<T> resultSets = await iterator.ReadNextAsync();
             foreach(T item in resultSets){
                 items.Add(item);
             }
@@ -35,4 +35,15 @@ public class Respository<T>:IRepository<T> where T : BaseEntity
 
         return items;
     }
+
+    public Task<List<T>> GetItems()
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<(bool, T)> UpdateItem(T item)
+    {
+        throw new NotImplementedException();
+    }
+
 }
