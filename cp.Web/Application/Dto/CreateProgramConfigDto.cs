@@ -8,10 +8,6 @@ namespace cp.Web.Application.Dto
 {
     public class CreateProgramConfigDto
     {
-        [Required]
-        public string ProgramTitle { get; set; }
-        [Required]
-        public string ProgramDescription { get; set; }
-        public List<CreateCustomQuestionDto> CustomQuestions { get; set; }
+        public List<CustomQuestionDto> CustomQuestions { get; set; }
     }
 }

@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<CosmosClientFactory>();
 
 builder.Services.AddTransient<IPersonSubmissionRepository, PersonSubmissionRepository>();
-builder.Services.AddTransient<IProgramConfigsRepository, ProgramConfigsRepository>();
+builder.Services.AddTransient<ICustomQuestionRepository, CustomQuestionsRepository>();
 
 builder.Services.AddTransient<IProgramConfigServices, ProgramConfigsServices>();
 

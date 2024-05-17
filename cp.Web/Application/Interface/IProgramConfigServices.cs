@@ -8,6 +8,9 @@ namespace cp.Web.Application.Interface
 {
     public interface IProgramConfigServices
     {
-        Task<ResponseDto> CreateProgramConfig(CreateProgramConfigDto dto);
+        Task<ResponseDto<string>> CreateCustomQuestion(CustomQuestionDto dto);
+        Task<ResponseDto<string>> UpdateCustomQuestion(string Id, CustomQuestionDto dto);
+        Task<ResponseDto<List<GetCustomQuestionDto>>> GetCustomQuestions();
+        Task<ResponseDto<string>> SubmitApplication(PersonSubmissionDto dto);
     }
 }

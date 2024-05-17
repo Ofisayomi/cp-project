@@ -6,7 +6,7 @@ using cp.Web.Domain;
 
 namespace cp.Web.Persistence.Repository
 {
-    public interface IProgramConfigsRepository : IRepository<ProgramConfigs>
+    public interface ICustomQuestionRepository : IRepository<CustomQuestions>
     {
 
     }

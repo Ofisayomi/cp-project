@@ -41,9 +41,17 @@ public class Respository<T> : IRepository<T> where T : BaseEntity
         return items;
     }
 
-    public Task<(bool, T)> UpdateItem(T item)
+    public async Task<(bool, T)> UpdateItem(string Id, T item)
     {
-        throw new NotImplementedException();
+        _container = (await _database).GetContainer(typeof(T).Name);
+
+        var resource = await _container.ReplaceItemAsync<T>(item, Id);
+        return (true, resource);
+    }
+
+    public async Task<T> GetItem(string Id)
+    {
+        return (await GetItems($"SELECT * FROM c WHERE c.id='{Id}'")).FirstOrDefault();
     }
 
 }

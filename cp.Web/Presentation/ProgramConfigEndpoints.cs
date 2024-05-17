@@ -12,9 +12,24 @@ namespace cp.Web.Presentation
     {
         public static void MapEndpoints(this WebApplication app)
         {
-            app.MapPost("/program-config", async ([FromServices] IProgramConfigServices _programConfigServices, [FromBody] CreateProgramConfigDto dto) =>
+            app.MapPost("/custom-question", async ([FromServices] IProgramConfigServices _programConfigServices, [FromBody] CustomQuestionDto dto) =>
             {
-                return await _programConfigServices.CreateProgramConfig(dto);
+                return await _programConfigServices.CreateCustomQuestion(dto);
+            });
+
+            app.MapPut("/custom-question/:Id", async ([FromServices] IProgramConfigServices _programConfigServices, string Id, [FromBody] CustomQuestionDto dto) =>
+            {
+                return await _programConfigServices.UpdateCustomQuestion(Id, dto);
+            });
+
+            app.MapGet("/custom-questions", async ([FromServices] IProgramConfigServices _programConfigServices) =>
+            {
+                return await _programConfigServices.GetCustomQuestions();
+            });
+
+            app.MapPost("/submit-application", async ([FromServices] IProgramConfigServices _programConfigServices, [FromBody] PersonSubmissionDto dto) =>
+            {
+                return await _programConfigServices.SubmitApplication(dto);
             });
         }
     }

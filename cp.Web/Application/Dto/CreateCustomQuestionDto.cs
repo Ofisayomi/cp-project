@@ -8,10 +8,9 @@ using Newtonsoft.Json;
 
 namespace cp.Web.Application.Dto
 {
-    public class CreateCustomQuestionDto
+    public class CustomQuestionDto
     {
         [Required]
-        [EnumDataType(typeof(QuestionTypeEnum))]
         public string QuestionType { get; set; }
         [Required]
         public string Question { get; set; }
@@ -19,4 +18,10 @@ namespace cp.Web.Application.Dto
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public List<string>? QuestionValues { get; set; }
     }
+
+    public class GetCustomQuestionDto : CustomQuestionDto
+    {
+        public string Id { get; set; }
+    }
+
 }

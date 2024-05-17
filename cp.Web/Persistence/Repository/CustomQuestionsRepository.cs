@@ -7,9 +7,9 @@ using cp.Web.Persistence.DbClient;
 
 namespace cp.Web.Persistence.Repository
 {
-    public class ProgramConfigsRepository : Respository<ProgramConfigs>, IProgramConfigsRepository
+    public class CustomQuestionsRepository : Respository<CustomQuestions>, ICustomQuestionRepository
     {
-        public ProgramConfigsRepository(CosmosClientFactory clientFactory) : base(clientFactory)
+        public CustomQuestionsRepository(CosmosClientFactory clientFactory) : base(clientFactory)
         {
         }
     }
