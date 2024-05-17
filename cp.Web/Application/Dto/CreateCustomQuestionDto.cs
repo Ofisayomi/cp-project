@@ -10,9 +10,9 @@ namespace cp.Web.Application.Dto
 {
     public class CustomQuestionDto
     {
-        [Required]
+        [Required(AllowEmptyStrings =false)]
         public string QuestionType { get; set; }
-        [Required]
+        [Required (AllowEmptyStrings =false)]
         public string Question { get; set; }
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
