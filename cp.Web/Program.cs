@@ -1,4 +1,8 @@
+using cp.Web.Application.Interface;
+using cp.Web.Application.Services;
 using cp.Web.Persistence.DbClient;
+using cp.Web.Persistence.Repository;
+using cp.Web.Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<CosmosClientFactory>();
+
+builder.Services.AddTransient<IPersonSubmissionRepository, PersonSubmissionRepository>();
+builder.Services.AddTransient<IProgramConfigsRepository, ProgramConfigsRepository>();
+
+builder.Services.AddTransient<IProgramConfigServices, ProgramConfigsServices>();
 
 var app = builder.Build();
 
@@ -18,7 +27,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+ProgramConfigEndpoints.MapEndpoints(app);
 
 app.Run();
 
